@@ -17,15 +17,15 @@ export default function Header() {
   return (
     <header
       className={cn(
-        "fixed w-full grid content-center h-20 transition-all duration-500 md:text-xl text-md",
+        "fixed w-full h-20 transition duration-500 md:text-xl text-md z-50",
         {
-          "md:scale-[80%] h-10 bg-gradient-to-b from-gray-900 via-gray-900/50 to-transparent opacity-90":
-            scroll > 200,
+          "md:scale-[90%] h-20 bg-gradient-to-b from-gray-950 to-gray-950/10 pacity-90 -translate-y-[5%]":
+            scroll > 100,
         },
       )}
     >
       <motion.div
-        className="absolute grid place-content-center top-0 left-1/2 h-20 w-full"
+        className="absolute grid place-content-center left-1/2 h-20 w-full"
         initial={{
           opacity: 0,
           y: -100,
@@ -37,7 +37,7 @@ export default function Header() {
           translateX: "-50%",
         }}
       >
-        <nav className="grid grid-cols-4 text-center py-auto md:gap-4 gap-0">
+        <nav className="grid grid-cols-4 text-center md:gap-4 gap-2">
           {sections.map((section) => {
             return <NavItem key={`nav-item-${section.id}`} {...section} />;
           })}
@@ -56,8 +56,8 @@ const NavItem = ({ id, label }: Section) => {
         "transition rounded-full py-2 px-4",
         "hover:bg-opacity-80",
         {
-          "font-bold scale-105 bg-green-700": currentSectionId === id,
-          "hover:bg-gray-600": currentSectionId !== id,
+          "font-bold scale-105": currentSectionId === id,
+          hover: currentSectionId !== id,
         },
       )}
     >

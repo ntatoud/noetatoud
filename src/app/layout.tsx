@@ -21,7 +21,7 @@ export default function RootLayout({
       <body
         className={cn(
           inter.className,
-          "antialised relative flex flex-col min-h-screen flex-grow bg-gray-900 font-sans tracking-tight text-white",
+          "antialised relative flex flex-col min-h-screen flex-grow bg-gray-950 font-sans tracking-tight text-white",
         )}
       >
         <Header />
