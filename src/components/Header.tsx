@@ -1,13 +1,31 @@
 "use client";
-import { sections } from "@/data/sections";
-import { motion } from "framer-motion";
+import { Section, sections } from "@/data/sections";
+import { cn } from "@/lib/utils";
+import { useSection } from "@/lib/zustand/store";
+import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function Header() {
+  const [scroll, setScroll] = useState(0);
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", () => {
+    setScroll(scrollY.get());
+  });
+
   return (
-    <header className="relative w-full grid content-center h-20 transtion">
+    <header
+      className={cn(
+        "fixed w-full grid content-center h-20 transition-all duration-500 text-xl ",
+        {
+          "scale-[80%] h-10 bg-gradient-to-b from-gray-900 via-gray-900/50 to-transparent opacity-90":
+            scroll > 200,
+        },
+      )}
+    >
       <motion.div
-        className="absolute top-4 left-1/2"
+        className="absolute grid place-content-center top-0 left-1/2 h-20"
         initial={{
           opacity: 0,
           y: -100,
@@ -19,16 +37,31 @@ export default function Header() {
           translateX: "-50%",
         }}
       >
-        <nav className="grid grid-cols-5 text-center gap-4">
-          {sections.map(({ id, label }) => {
-            return (
-              <Link key={`nav-item-${id}`} href={`#${id}`}>
-                {label}
-              </Link>
-            );
+        <nav className="grid grid-cols-4 text-center gap-4 py-auto">
+          {sections.map((section) => {
+            return <NavItem key={`nav-item-${section.id}`} {...section} />;
           })}
         </nav>
       </motion.div>
     </header>
   );
 }
+
+const NavItem = ({ id, label }: Section) => {
+  const currentSectionId = useSection();
+  return (
+    <Link
+      href={`#${id}`}
+      className={cn(
+        "transition rounded-full py-2 px-4",
+        "hover:bg-opacity-80",
+        {
+          "font-bold scale-105 bg-green-700": currentSectionId === id,
+          "hover:bg-gray-600": currentSectionId !== id,
+        },
+      )}
+    >
+      {label}
+    </Link>
+  );
+};

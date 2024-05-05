@@ -3,11 +3,11 @@
 ## Setup
 - [x] Deploy on vercel
 - [x] Add the base plugins and deps
-- [ ] Layout of the page (sections)
+- [x] Layout of the page (sections)
 - [ ] Styling / Color Palette
 
 ## Sections : 
-- [ ] Header
+- [x] Header
 - [ ] Hero
 - [ ] Social Medias
 - [ ] About me
