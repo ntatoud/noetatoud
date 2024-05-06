@@ -4,7 +4,7 @@
 - [x] Deploy on vercel
 - [x] Add the base plugins and deps
 - [x] Layout of the page (sections)
-- [ ] Styling / Color Palette
+- [x] Styling / Color Palette
 
 ## Sections : 
 - [x] Header

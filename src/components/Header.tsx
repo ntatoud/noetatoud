@@ -19,7 +19,7 @@ export default function Header() {
       className={cn(
         "fixed w-full h-20 transition duration-500 md:text-xl text-md z-50",
         {
-          "md:scale-[90%] h-20 bg-gradient-to-b from-gray-950 to-gray-950/10 pacity-90 -translate-y-[5%]":
+          "md:scale-[90%] h-20 bg-gradient-to-b from-background to-background-950/10 pacity-90 -translate-y-[5%]":
             scroll > 100,
         },
       )}
@@ -38,7 +38,7 @@ export default function Header() {
         }}
       >
         <nav className="grid grid-cols-4 text-center md:gap-4 gap-2">
-          {sections.map((section) => {
+          {sections.map((section, index) => {
             return <NavItem key={`nav-item-${section.id}`} {...section} />;
           })}
         </nav>
@@ -54,9 +54,9 @@ const NavItem = ({ id, label }: Section) => {
       href={`#${id}`}
       className={cn(
         "transition rounded-full py-2 px-4",
-        "hover:bg-opacity-80",
+        "hover:text-foreground",
         {
-          "font-bold scale-105": currentSectionId === id,
+          "font-bold scale-105 text-primary": currentSectionId === id,
           hover: currentSectionId !== id,
         },
       )}

@@ -17,13 +17,13 @@ export default function Section({ ...props }: SectionProps) {
   return (
     <section
       className={cn(
-        "flex flex-col items-center w-full max-w-screen h-[50rem] scroll-m-24 px-4 md:px-16 lg:px-24",
+        "flex flex-col items-center w-full max-w-screen h-[50rem] scroll-m-24 px-6 md:px-16 lg:px-24",
         props.className,
       )}
       id={props.id}
       ref={ref}
     >
-      <SectionTitle>{props.title}</SectionTitle>
+      {!!props.title && <SectionTitle>{props.title}</SectionTitle>}
       <div className="py-8 w-full h-full">{props.children}</div>
     </section>
   );

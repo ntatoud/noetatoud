@@ -1,5 +1,4 @@
-import Github from "../Icons/Github";
-import LinkedIn from "../Icons/LinkedIn";
+import { GithubIcon, LinkedInIcon } from "../Icons";
 
 const SocialMedias = () => {
   return (
@@ -8,17 +7,19 @@ const SocialMedias = () => {
         href="https://www.linkedin.com/in/noetatoud/"
         className="hover:scale-[115%] transition"
         target="_blank"
+        aria-label="LinkedIn"
         rel="noopener noreferrer"
       >
-        <LinkedIn />
+        <LinkedInIcon />
       </a>
       <a
         href="https://github.com/ntatoud/"
         className="hover:scale-[115%] transition"
         target="_blank"
+        aria-label="Github"
         rel="noopener noreferrer"
       >
-        <Github />
+        <GithubIcon />
       </a>
     </div>
   );
